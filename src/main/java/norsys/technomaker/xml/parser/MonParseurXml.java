@@ -59,7 +59,7 @@ public final class MonParseurXml {
 			builder.append("--------------------------<br>");
 		}
 
-		builder.append("Les informations des messgaes! <br>");
+		builder.append("<h2>Les informations des messgaes! </h2><br>");
 
 		builder.append("<b>Le nombre de messages :"
 				+ nombreMessagesTag.getText() + "</b><br>");

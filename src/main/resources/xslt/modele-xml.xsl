@@ -10,6 +10,7 @@
 		</auteurs>
 	</xsl:template>
 	<xsl:template match="messages">
+	<!-- on ne selectionne que les messages  dont l'auteur n'a pas été selectionné avant-->
 		<xsl:for-each
 			select="//message[not(auteur = preceding-sibling::message/auteur)]">
 			<auteur>

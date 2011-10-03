@@ -7,7 +7,7 @@
 	<xsl:template match="/">
 		<html>
 			<body>
-				<table><tr>
+				<table border="1"><tr>
 				<th>Reference</th>
 				<th>Auteur</th>
 				<th>Date</th>
