@@ -5,19 +5,19 @@
 	<xsl:output method="text" indent="no" />
 
 	<xsl:template match="/">
-		<!-- Continuez ici... -->
+		
 		<xsl:apply-templates select="messages/message" />
 
 	</xsl:template>
 	<xsl:template match="message">
 		<xsl:value-of select="@reference" />
-		<xsl:text>
+		<xsl:text><!-- retour a la ligne -->
 		</xsl:text>
 		<xsl:value-of select="auteur" />
-		<xsl:text>
+		<xsl:text> <!-- retour a la ligne -->
 		</xsl:text>
 		<xsl:value-of select="date" />
-		<xsl:text>
+		<xsl:text><!-- retour a la ligne -->
 		</xsl:text>
 		<xsl:value-of select="contenu" />
 		

@@ -5,67 +5,36 @@
 	<xsl:output method="xml" indent="yes" />
 
 	<xsl:template match="/">
-		<!-- Continuez ici... -->
-		<xsl:element name="auteurs">
+		<auteurs>
 			<xsl:apply-templates select="messages" />
-		</xsl:element>
+		</auteurs>
 	</xsl:template>
 	<xsl:template match="messages">
-		<auteur>
-			<nom>Alice</nom>
-			<xsl:for-each select="message">
-				<xsl:if test="auteur='Alice'">
+		<xsl:for-each
+			select="//message[not(auteur = preceding-sibling::message/auteur)]">
+			<auteur>
+				<!-- nomAuteur varibale contenant le nom de l'auteur selectionné par la boucle for-->
+				<xsl:variable name="nomAuteur">
+					<xsl:value-of select="auteur" />
+				</xsl:variable>
+				<nom>
+					<xsl:value-of select="$nomAuteur" />
+				</nom>
+				<!-- afficher tous les messages de l'auteur  $nomAuteur-->
+				<xsl:for-each select="//message[auteur=$nomAuteur]">
+				
+					<!-- ref une variable pour l'affichage de l'attribut reference -->
 					<xsl:variable name="ref" select="@reference"></xsl:variable>
 					<message reference='{$ref}'>
+						<contenu>
+							<xsl:value-of select="contenu" />
+						</contenu>
 						<date>
 							<xsl:value-of select="date"></xsl:value-of>
 						</date>
-						<contenu>
-							<xsl:value-of select="contenu"></xsl:value-of>
-						</contenu>
 					</message>
-
-				</xsl:if>
-
-			</xsl:for-each>
-		</auteur>
-		<auteur>
-			<nom>Guillaume</nom>
-			<xsl:for-each select="message">
-				<xsl:if test="auteur='Guillaume'">
-					<xsl:variable name="ref" select="@reference"></xsl:variable>
-					<message reference='{$ref}'>
-						<date>
-							<xsl:value-of select="date"></xsl:value-of>
-						</date>
-						<contenu>
-							<xsl:value-of select="contenu"></xsl:value-of>
-						</contenu>
-					</message>
-
-				</xsl:if>
-
-			</xsl:for-each>
-		</auteur>
-		<auteur>
-			<nom>Julien</nom>
-			<xsl:for-each select="message">
-				<xsl:if test="auteur='Julien'">
-					<xsl:variable name="ref" select="@reference"></xsl:variable>
-					<message reference='{$ref}'>
-						<date>
-							<xsl:value-of select="date"></xsl:value-of>
-						</date>
-						<contenu>
-							<xsl:value-of select="contenu"></xsl:value-of>
-						</contenu>
-					</message>
-
-				</xsl:if>
-
-			</xsl:for-each>
-		</auteur>
-
+				</xsl:for-each>
+			</auteur>
+		</xsl:for-each>
 	</xsl:template>
-
 </xsl:stylesheet>
