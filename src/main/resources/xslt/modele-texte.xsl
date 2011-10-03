@@ -10,11 +10,11 @@
 
 	</xsl:template>
 	<xsl:template match="message">
-		<xsl:value-of select="@reference" />
+		<xsl:value-of select="@reference" /><![CDATA[&nbsp;&nbsp;&nbsp;]]>
 		
-		<xsl:value-of select="auteur" />
+		<xsl:value-of select="auteur" /><![CDATA[&nbsp;&nbsp;&nbsp;]]>
 		
-		<xsl:value-of select="date" />
+		<xsl:value-of select="date" /><![CDATA[&nbsp;&nbsp;&nbsp;]]>
 	
 		<xsl:value-of select="contenu" /><![CDATA[<br/>]]>
 		
